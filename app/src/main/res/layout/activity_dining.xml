@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:background="@drawable/repeating_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/diningHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dining at LuxeVista"
+            android:fontFamily="@font/dancing_script_semibold"
+            android:textSize="36sp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/diningImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/dining_image"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/diningDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Explore our exquisite dining options, from gourmet cuisine to local delicacies."
+            android:textSize="18sp"
+            android:lineSpacingExtra="6dp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/diningImage2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/dining_image1"
+            android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/diningDescription1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="From the elegance of candlelit dining in the Dining Room to the indulgence of afternoon teas on the sunny veranda and long lazy lunches by the pool, Amangalla offers guests a sublime taste of International cuisine as well as Sri Lanka’s legendary flavours in a host of atmospheric settings."
+            android:textSize="18sp"
+            android:lineSpacingExtra="6dp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+
+        <TextView
+            android:id="@+id/diningHeading1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dining room"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+
+
+        <TextView
+            android:id="@+id/diningDescription2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Furnished with period chairs and tables, crisp white linen and antique silverware, the high-ceilinged Dining Room is open for breakfast and all-day dining. Soaring fin de siècle ceilings, overhead fans and chandeliers create an exquisite setting for authentic Sri Lankan and international fare. The Dining Room offers simple Brasserie style cuisine incorporating local produce and flavours."
+            android:textSize="18sp"
+            android:lineSpacingExtra="6dp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+    </LinearLayout>
+</ScrollView>

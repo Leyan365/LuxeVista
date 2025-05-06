@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LuxeVistaApp</string>
+    <string name="select_service_prompt">Select Service</string>
+    <string name="navigation_drawer_open">Open Navigation</string>
+    <string name="navigation_drawer_close">Close Navigation</string>
+    <string name="google_maps_api_key">AIzaSyDw_iuOi2CwOgx73vOSV8AoaA3aEQwhwu8</string>
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/repeating_background">
+
+    <TextView
+        android:id="@+id/contactHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact Us at LuxeVista"
+        android:fontFamily="@font/dancing_script_semibold"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        android:padding="16dp"
+        android:backgroundTint="#80FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/contactInfoHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Our Contact Information"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/contactPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone: +94 77 68 28 804"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/contactEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email: contact@luxevista.com"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/contactAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address: 123 LuxeVista Blvd, City, Country"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/mapImageView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="Static Map" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
