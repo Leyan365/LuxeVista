@@ -1,60 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp"
-    layout_height=""
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="12dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
-
-        <TextView
-            android:id="@+id/roomType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Room Type"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="$100"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/features"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Features: Sea View"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/bookNowButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Book Now"
-            android:backgroundTint="@color/primaryColor"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:padding="12dp"
-            android:shape="rectangle"
-            android:radius="8dp"/>
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/roomImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/resort" />
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:src="@drawable/family_suite" />
 
+        <TextView
+            android:id="@+id/roomType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            app:layout_constraintTop_toBottomOf="@id/roomImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/price"
+            tools:text="Family Suite" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintTop_toTopOf="@id/roomType"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="$300" />
+
+        <TextView
+            android:id="@+id/price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/ night"
+            android:textAppearance="?attr/textAppearanceLabelMedium"
+            app:layout_constraintTop_toBottomOf="@id/price"
+            app:layout_constraintEnd_toEndOf="@id/price" />
+
+        <TextView
+            android:id="@+id/features"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            app:layout_constraintTop_toBottomOf="@id/roomType"
+            app:layout_constraintStart_toStartOf="@id/roomType"
+            app:layout_constraintEnd_toEndOf="@id/price"
+            tools:text="Two Bedrooms, Living Area, Kitchenette" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bookNowButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Book Now"
+            app:layout_constraintTop_toBottomOf="@id/features"
+            app:layout_constraintStart_toStartOf="@id/roomType"
+            app:layout_constraintEnd_toEndOf="@id/price"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

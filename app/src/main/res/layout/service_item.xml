@@ -1,47 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp"
-    layout_height=""
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="12dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/serviceImage"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/fine_dining" />
 
         <TextView
             android:id="@+id/serviceName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Service Name"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/servicePrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="$50"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/serviceSchedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Schedule: 9 AM - 5 PM"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:id="@+id/serviceImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/service" />
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="12dp"
+            android:textAppearance="?attr/textAppearanceTitleSmall"
+            tools:text="Fine Dining" />
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>	
+</com.google.android.material.card.MaterialCardView>

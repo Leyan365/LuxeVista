@@ -1,79 +1,77 @@
 package com.example.luxevistaapp;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.luxevistaapp.databinding.ServiceItemBinding;
 import java.util.List;
 
-public class ServiceAdapter extends BaseAdapter {
-    private Context context;
-    private List<Service> services;
+public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder> {
 
-    public ServiceAdapter(Context context, List<Service> services) {
-        this.context = context;
+    private final List<Service> services;
+
+    public ServiceAdapter(List<Service> services) {
         this.services = services;
     }
 
+    @NonNull
     @Override
-    public int getCount() {
+    public ServiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ServiceItemBinding binding = ServiceItemBinding.inflate(
+                LayoutInflater.from(parent.getContext()),
+                parent,
+                false
+        );
+        return new ServiceViewHolder(binding);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ServiceViewHolder holder, int position) {
+        Service currentService = services.get(position);
+        holder.bind(currentService);
+    }
+
+    @Override
+    public int getItemCount() {
         return services.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return services.get(position);
-    }
+    static class ServiceViewHolder extends RecyclerView.ViewHolder {
+        private final ServiceItemBinding binding;
 
-    @Override
-    public long getItemId(int position) {
-        return services.get(position).getServiceID();
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Service service = services.get(position);
-
-        convertView = null;
-
-        if (convertView == null) {
-            switch (service.getName()) {
-                case "Fine Dining":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.service_item_fine_dining, parent, false);
-                    break;
-                case "Snorkeling":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.service_item_snorkeling, parent, false);
-                    break;
-                case "Boat Ride":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.service_item_boat_ride, parent, false);
-                    break;
-                case "Yoga Classes":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.service_item_yoga_classes, parent, false);
-                    break;
-                case "Cocktail Making":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.service_item_cocktail_making, parent, false);
-                    break;
-                case "Kids Club":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.service_item_kids_club, parent, false);
-                    break;
-
-            }
+        public ServiceViewHolder(ServiceItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
-        TextView nameTextView = convertView.findViewById(R.id.serviceName);
-        TextView priceTextView = convertView.findViewById(R.id.servicePrice);
-        TextView scheduleTextView = convertView.findViewById(R.id.serviceSchedule);
+        public void bind(Service service) {
+            binding.serviceName.setText(service.getName());
 
-        nameTextView.setText(service.getName());
-        priceTextView.setText(String.format("$%.2f", service.getPrice()));
-        scheduleTextView.setText(service.getSchedule());
-
-        return convertView;
+            // Set the correct image based on the service name
+            switch (service.getName()) {
+                case "Fine Dining":
+                    binding.serviceImage.setImageResource(R.drawable.fine_dining);
+                    break;
+                case "Snorkeling":
+                    binding.serviceImage.setImageResource(R.drawable.snorkeling);
+                    break;
+                case "Boat Ride":
+                    binding.serviceImage.setImageResource(R.drawable.boat_ride);
+                    break;
+                case "Yoga Classes":
+                    binding.serviceImage.setImageResource(R.drawable.yoga_classes);
+                    break;
+                case "Cocktail Making":
+                    binding.serviceImage.setImageResource(R.drawable.cocktail_making);
+                    break;
+                case "Kids Club":
+                    binding.serviceImage.setImageResource(R.drawable.kids_club);
+                    break;
+                default:
+                    binding.serviceImage.setImageResource(R.drawable.service); // Default image
+                    break;
+            }
+        }
     }
-
 }

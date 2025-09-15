@@ -1,5 +1,4 @@
 package com.example.luxevistaapp;
-
 public class DiningOption {
     private String name;
     private int imageResource;

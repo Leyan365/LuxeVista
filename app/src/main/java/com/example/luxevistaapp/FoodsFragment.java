@@ -18,7 +18,6 @@ import java.util.List;
 public class FoodsFragment extends Fragment {
     private RecyclerView recyclerView;
     private FoodAdapter foodAdapter;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

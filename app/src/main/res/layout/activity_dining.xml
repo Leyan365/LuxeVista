@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:background="@drawable/repeating_background">
 
@@ -12,6 +12,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Main Title -->
         <TextView
             android:id="@+id/diningHeading"
             android:layout_width="match_parent"
@@ -19,26 +20,28 @@
             android:text="Dining at LuxeVista"
             android:fontFamily="@font/dancing_script_semibold"
             android:textSize="36sp"
+            android:textColor="#212121"
             android:gravity="center"
             android:layout_marginBottom="20dp" />
 
+        <!-- Image Card 1 -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginVertical="10dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:layout_marginTop="10dp">
+            app:cardElevation="4dp">
 
             <ImageView
                 android:id="@+id/diningImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/dining_image"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:contentDescription="Main dining image" />
         </androidx.cardview.widget.CardView>
 
-
+        <!-- Description -->
         <TextView
             android:id="@+id/diningDescription"
             android:layout_width="match_parent"
@@ -46,26 +49,28 @@
             android:text="Explore our exquisite dining options, from gourmet cuisine to local delicacies."
             android:textSize="18sp"
             android:lineSpacingExtra="6dp"
+            android:textColor="#212121"
             android:gravity="center"
             android:layout_marginBottom="20dp" />
 
+        <!-- Image Card 2 -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginVertical="10dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:layout_marginTop="10dp">
+            app:cardElevation="4dp">
 
-        <ImageView
-            android:id="@+id/diningImage2"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/dining_image1"
-            android:scaleType="centerCrop" />
+            <ImageView
+                android:id="@+id/diningImage2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/dining_image1"
+                android:scaleType="centerCrop"
+                android:contentDescription="Dining room and veranda view" />
         </androidx.cardview.widget.CardView>
 
+        <!-- Description 2 -->
         <TextView
             android:id="@+id/diningDescription1"
             android:layout_width="match_parent"
@@ -73,20 +78,23 @@
             android:text="From the elegance of candlelit dining in the Dining Room to the indulgence of afternoon teas on the sunny veranda and long lazy lunches by the pool, Amangalla offers guests a sublime taste of International cuisine as well as Sri Lanka’s legendary flavours in a host of atmospheric settings."
             android:textSize="18sp"
             android:lineSpacingExtra="6dp"
+            android:textColor="#212121"
             android:gravity="center"
             android:layout_marginBottom="20dp" />
 
-
+        <!-- Subheading -->
         <TextView
             android:id="@+id/diningHeading1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dining room"
+            android:text="Dining Room"
+            android:textColor="#212121"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="12dp"
+            android:gravity="center" />
 
-
+        <!-- Description 3 -->
         <TextView
             android:id="@+id/diningDescription2"
             android:layout_width="match_parent"
@@ -94,6 +102,7 @@
             android:text="Furnished with period chairs and tables, crisp white linen and antique silverware, the high-ceilinged Dining Room is open for breakfast and all-day dining. Soaring fin de siècle ceilings, overhead fans and chandeliers create an exquisite setting for authentic Sri Lankan and international fare. The Dining Room offers simple Brasserie style cuisine incorporating local produce and flavours."
             android:textSize="18sp"
             android:lineSpacingExtra="6dp"
+            android:textColor="#212121"
             android:gravity="center"
             android:layout_marginBottom="20dp" />
 

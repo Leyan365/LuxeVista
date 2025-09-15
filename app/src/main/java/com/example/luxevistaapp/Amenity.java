@@ -1,5 +1,4 @@
 package com.example.luxevistaapp;
-
 public class Amenity {
     private String name;
     private int imageResource;

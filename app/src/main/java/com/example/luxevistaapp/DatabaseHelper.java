@@ -108,6 +108,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public String getUserName(int userID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        String userName = "Guest"; // Default name
+        try {
+            cursor = db.rawQuery("SELECT Name FROM " + TABLE_USERS + " WHERE " + COLUMN_USER_ID + " = ?", new String[]{String.valueOf(userID)});
+            if (cursor != null && cursor.moveToFirst()) {
+                userName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME));
+            }
+        } catch (Exception e) {
+            Log.e("DatabaseHelper", "Error getting user name", e);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return userName;
+    }
+
+
     public List<Room> getAvailableRooms() {
         List<Room> rooms = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -191,34 +211,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return bookings;
     }
 
-    public List<String> getBookingsByUser(int userID) {
-        List<String> bookings = new ArrayList<>();
+
+    public List<BookingDetails> getBookingsByUser(int userID) {
+        List<BookingDetails> bookings = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // SQL query with WHERE clause
-        String query = "SELECT b.BookingID, r.roomType, b.CheckInDate, b.CheckOutDate " +
+        String query = "SELECT r.roomType, b.CheckInDate, b.CheckOutDate " +
                 "FROM Bookings b " +
                 "JOIN Rooms r ON b.RoomID = r.roomID " +
-                "WHERE b.UserID = ?";
-
-        Log.d("getBookingsByUser", "Executing query: " + query + " with userID: " + userID);
+                "WHERE b.UserID = ? " +
+                "ORDER BY b.BookingID DESC"; // Show most recent first
 
         Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userID)});
 
         if (cursor.moveToFirst()) {
             do {
-                @SuppressLint("Range") String bookingDetails = "Booking ID: " + cursor.getInt(cursor.getColumnIndex("BookingID")) +
-                        ", Room: " + cursor.getString(cursor.getColumnIndex("roomType")) +
-                        ", Check-In: " + cursor.getString(cursor.getColumnIndex("CheckInDate")) +
-                        ", Check-Out: " + cursor.getString(cursor.getColumnIndex("CheckOutDate"));
+                @SuppressLint("Range") String roomType = cursor.getString(cursor.getColumnIndex("roomType"));
+                @SuppressLint("Range") String checkInDate = cursor.getString(cursor.getColumnIndex("CheckInDate"));
+                @SuppressLint("Range") String checkOutDate = cursor.getString(cursor.getColumnIndex("CheckOutDate"));
 
-                Log.d("getBookingsByUser", "Found booking: " + bookingDetails); // Log each booking
-                bookings.add(bookingDetails);
+                bookings.add(new BookingDetails(roomType, checkInDate, checkOutDate));
             } while (cursor.moveToNext());
-        } else {
-            Log.d("getBookingsByUser", "No bookings found for userID: " + userID);
         }
-
         cursor.close();
         return bookings;
     }

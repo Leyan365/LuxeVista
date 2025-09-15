@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 
 public class ContactUsActivity extends AppCompatActivity {
 
-    private static final String GOOGLE_MAPS_API_KEY = "AIzaSyDw_iuOi2CwOgx73vOSV8AoaA3aEQwhwu8";
+    private static final String GOOGLE_MAPS_API_KEY = "YOUR_API_KEY_HERE";  // <-- Insert your key
     private static final String STATIC_MAP_URL =
             "https://maps.googleapis.com/maps/api/staticmap?" +
                     "center=6.0321,80.2167" +
@@ -28,12 +28,13 @@ public class ContactUsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
 
         ImageView mapImageView = findViewById(R.id.mapImageView);
 
-        // Fetch and display the static map
+        // Load static map in a background thread
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
             Bitmap mapBitmap = fetchStaticMap(STATIC_MAP_URL);

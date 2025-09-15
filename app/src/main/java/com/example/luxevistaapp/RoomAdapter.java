@@ -1,95 +1,96 @@
 package com.example.luxevistaapp;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.luxevistaapp.databinding.RoomItemBinding; // Import ViewBinding
 
 import java.util.List;
 
-public class RoomAdapter extends BaseAdapter {
-    private Context context;
-    private List<Room> rooms;
+public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder> {
 
+    private List<Room> rooms;
     private BookingListener bookingListener;
 
-    public RoomAdapter(Context context, List<Room> rooms) {
-        this.context = context;
+    // The listener interface
+    public interface BookingListener {
+        void onBookRoom(Room room);
+    }
+
+    public RoomAdapter(List<Room> rooms, BookingListener listener) {
         this.rooms = rooms;
-    }
-
-    @Override
-    public int getCount() {
-        return rooms.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return rooms.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return rooms.get(position).getRoomID();
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Room room = rooms.get(position);
-
-        convertView = null;
-
-        if (convertView == null) {
-            switch (room.getRoomType()) {
-                case "Single Deluxe":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.room_item_single, parent, false);
-                    break;
-                case "Double Deluxe":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.room_item_double, parent, false);
-                    break;
-                case "Honeymoon Suite":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.room_item_honeymoon, parent, false);
-                    break;
-                case "Family Suite":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.room_item_family, parent, false);
-                    break;
-                case "Presidential Suite":
-                    convertView = LayoutInflater.from(context).inflate(R.layout.room_item_presidential, parent, false);
-                    break;
-            }
-        }
-
-        TextView roomTypeTextView = convertView.findViewById(R.id.roomType);
-        TextView priceTextView = convertView.findViewById(R.id.price);
-        TextView featuresTextView = convertView.findViewById(R.id.features);
-        Button bookNowButton = convertView.findViewById(R.id.bookNowButton);
-
-        roomTypeTextView.setText(room.getRoomType());
-        priceTextView.setText(String.format("$%.2f", room.getPrice()));
-        featuresTextView.setText(room.getFeatures());
-
-        bookNowButton.setOnClickListener(v -> {
-            if (bookingListener != null) {
-                bookingListener.onBookRoom(room);
-            }
-        });
-
-        return convertView;
-    }
-
-
-    // Set the listener in the adapter
-    public void setBookingListener(BookingListener listener) {
         this.bookingListener = listener;
     }
 
-    // Interface definition for booking
-    public interface BookingListener {
-        void onBookRoom(Room room);
+    @NonNull
+    @Override
+    public RoomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Inflate the single, reusable layout file using ViewBinding
+        RoomItemBinding binding = RoomItemBinding.inflate(
+                LayoutInflater.from(parent.getContext()),
+                parent,
+                false
+        );
+        return new RoomViewHolder(binding);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RoomViewHolder holder, int position) {
+        // Get the data for the current position
+        Room currentRoom = rooms.get(position);
+        // Bind the data to the views
+        holder.bind(currentRoom, bookingListener);
+    }
+
+    @Override
+    public int getItemCount() {
+        return rooms.size();
+    }
+
+    // The ViewHolder holds the views for a single item
+    public static class RoomViewHolder extends RecyclerView.ViewHolder {
+        private final RoomItemBinding binding; // Use ViewBinding
+
+        public RoomViewHolder(RoomItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        // A method to bind the data to the views
+        public void bind(final Room room, final BookingListener listener) {
+            binding.roomType.setText(room.getRoomType());
+            binding.price.setText(String.format("$%.2f", room.getPrice()));
+            binding.features.setText(room.getFeatures());
+
+            // Set the correct image based on the room type
+            switch (room.getRoomType()) {
+                case "Single Deluxe":
+                    binding.roomImage.setImageResource(R.drawable.single_deluxe);
+                    break;
+                case "Double Deluxe":
+                    binding.roomImage.setImageResource(R.drawable.double_deluxe);
+                    break;
+                case "Honeymoon Suite":
+                    binding.roomImage.setImageResource(R.drawable.honeymoon_suite);
+                    break;
+                case "Family Suite":
+                    binding.roomImage.setImageResource(R.drawable.family_suite);
+                    break;
+                case "Presidential Suite":
+                    binding.roomImage.setImageResource(R.drawable.presidential_suite);
+                    break;
+                default:
+                    binding.roomImage.setImageResource(R.drawable.resort); // A default image
+                    break;
+            }
+
+            // Set the click listener for the button
+            binding.bookNowButton.setOnClickListener(v -> listener.onBookRoom(room));
+        }
     }
 }

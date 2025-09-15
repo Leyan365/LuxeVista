@@ -1,24 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp">
 
-    <EditText
-        android:id="@+id/checkInDate"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Select Check-In Date"
-        android:focusable="false"
-        android:clickable="true" />
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+        tools:text="Book: Family Suite" />
 
-    <EditText
-        android:id="@+id/checkOutDate"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/select_dates_button"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Select Check-Out Date"
-        android:focusable="false"
-        android:clickable="true" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Select Check-in &amp; Check-out Dates"
+        app:icon="@drawable/ic_calendar" />
+
+    <TextView
+        android:id="@+id/date_summary_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:text="Selected: Jul 29, 2025 - Aug 01, 2025" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/dividerHorizontal"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/price_summary_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:text="$300.00 x 3 nights = $900.00" />
 
 </LinearLayout>
